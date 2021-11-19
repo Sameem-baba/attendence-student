@@ -16,7 +16,7 @@ function Home() {
     }
     
     const addAbsent = async () => {
-         await deleteDoc(doc(db, 'attendence', user.email, 'present', user.uid)).then((user) => {alert('You Have been marked as absent')}).catch((err) => alert(err.message));;
+         await deleteDoc(doc(db, 'attendence', 'user', 'present', user.email)).then((user) => {alert('You Have been marked as absent')}).catch((err) => alert(err.message));;
     }
     
     return (
