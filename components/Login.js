@@ -16,7 +16,7 @@ function Login() {
     return (
         <div className='flex flex-col items-center justify-center min-h-screen py-2'>
             <main className="flex flex-col items-center justify-center w-2/3 flex-1 text-center">
-                <div className='bg-white rounded-3xl shadow-2xl flex w-2/3 max-w-4xl'>
+                <div className='bg-white rounded-3xl shadow-2xl flex w-2/3 justify-center items-center max-w-4xl'>
                     <div className='w-3/5 text-center flex flex-col p-5'>
                         <div className='text-center font-bold'>
                             <span className='text-green-500'>Company</span>Name
