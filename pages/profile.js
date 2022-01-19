@@ -1,11 +1,24 @@
 import Sidebar from "../components/Sidebar";
 import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atom/ModalAtom";
+import UsernameModel from "../components/UsernameModel";
 
 function Profile() {
   const [user] = useAuthState(auth);
+  const [open, setOpen] = useRecoilState(modalState);
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div
+      className="flex flex-col items-center justify-center min-h-screen py-2"
+      style={{
+        backgroundSize: "cover",
+        backgroundImage: `url("https://ak.picdn.net/shutterstock/videos/20344780/thumb/1.jpg")`,
+        backgroundPosition: "center center",
+      }}
+    >
       <Sidebar />
       <div className="p-10 bg-purple-600 text-white rounded-2xl shadow-2xl text-center flex flex-col justify-center space-y-5 items-center">
         <Image
@@ -17,8 +30,19 @@ function Profile() {
 
         <h1>Email - {user?.email}</h1>
 
-        <h1>Username - {user?.email}</h1>
+        <h1>
+          Username - {!user?.displayName ? user?.email : user?.displayName}
+        </h1>
       </div>
+
+      <button
+        onClick={() => setOpen(true)}
+        className="bg-gradient-to-tr from-purple-600 to-green-600 px-5 py-2 mt-10 rounded-3xl top-10 right-10"
+      >
+        Change Username
+      </button>
+
+      <UsernameModel />
     </div>
   );
 }
